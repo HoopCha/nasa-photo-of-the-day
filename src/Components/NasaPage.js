@@ -15,16 +15,23 @@ export default function NasaPage() {
 
 
     function randomDate() {
-        var randomDate = "";
-        var day = Math.floor(Math.random() * 28) + 1;
-        var month = Math.floor(Math.random() * 12) + 1;
-        var year = Math.floor(Math.random() * 19) + 2000;
+        let randomDate = "";
+        let day = Math.floor(Math.random() * 28) + 1;
+        let month = Math.floor(Math.random() * 12) + 1;
+        let year = Math.floor(Math.random() * 19) + 2000;
         randomDate = `&date=${year}-${month}-${day}`;
         return randomDate
     }
-    
-    randomDate();
+   
+    function todaysDate() {
+        let date = new Date();
+        let day = date.getDate();
+        let month = date.getMonth() + 1;
+        let year = date.getFullYear();
+        return `&date=${year}-${month}-${day}`;
+    }
 
+    console.log(todaysDate())
 
     useEffect(() => {
         axios
@@ -47,6 +54,7 @@ export default function NasaPage() {
                 />
             </div>
             <button onClick={() => setDate(randomDate())}>Random Date</button>
+            <button onClick={() => setDate(todaysDate())}>Todays Date</button>
             <div className="body">
                 <NasaCard
                     todaysPhoto={universe.url}
