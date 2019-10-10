@@ -3,7 +3,30 @@ import axios from "axios";
 import NasaHeader from "./NasaHeader";
 //import NasaFooter from "./NasaFooter";
 import NasaCard from "./NasaCard";
+import styled from "styled-components";
 
+export const DateButton = styled.button`
+  width: 100px;
+  height: 40px;
+  background: black;
+  color: white;
+  border: 1px black solid;
+  margin: 5px 10px;
+  transition: 0.2s ease-in;
+  &:hover {
+    background: white;
+    color: black;
+    border: 1px black solid;
+  }
+`;
+
+export const Everything = styled.div`
+background-image: linear-gradient(lightgray, white);
+width: 80%;
+margin: 0 auto;
+
+  }
+`;
 
 // https://api.nasa.gov/planetary/apod?api_key=Ho9TP8UIaD2C0jSm8YoU4P9XFgo1eOXCdNGwP9Sm
 
@@ -47,14 +70,14 @@ export default function NasaPage() {
     },[date]);
 
     return (
-        <div className="containers">
+        <Everything className="containers">
             <div className = "header">
                 <NasaHeader
                     todaysDate={universe.date}
                 />
             </div>
-            <button onClick={() => setDate(randomDate())}>Random Date</button>
-            <button onClick={() => setDate(todaysDate())}>Todays Date</button>
+            <DateButton onClick={() => setDate(randomDate())}>Random Date</DateButton>
+            <DateButton onClick={() => setDate(todaysDate())}>Todays Date</DateButton>
             <div className="body">
                 <NasaCard
                     todaysPhoto={universe.url}
@@ -62,6 +85,6 @@ export default function NasaPage() {
                     photoDescription={universe.explanation}
                     />
             </div>
-        </div>
+        </Everything>
     );
 }
