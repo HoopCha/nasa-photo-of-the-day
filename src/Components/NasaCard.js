@@ -18,12 +18,14 @@ const SpaceImage = styled.img`
   height:auto;
   object-fit: scale;
   flex-shrink: 2;
+  margin: 0rem;
 `;
 
 const DescriptionText = styled.p`
   width: 95%;
   font-size: 1.2rem;
   text-align: center;
+  margin: 0rem
 `;
 
 
